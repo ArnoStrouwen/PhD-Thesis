@@ -1,0 +1,29 @@
+\chapter{Introduction}
+\section{Motivation}
+Fresh fruit and vegetables are perishable and need to be stored at appropriate conditions after their harvest. The temperature is typically set as low as possible to reduce respiration, but above the freezing point of the product. Below this point, massive cell damage occurs and the product no longer can be considered as fresh. A further reduction of the respiration rate is possible by reducing the $\oxy$ partial pressure of the storage atmosphere and increasing its $\coxy$
+partial pressure. 
+
+The optimal storage conditions (temperature, $\oxy$ and $\coxy$ partial pressures) of fruit and vegetables depend on the species, cultivar, ripeness stage and many other factors and must be experimentally determined. Traditionally, this has been achieved by storing the product at many combinations of temperature, $\oxy$ partial pressure and $\coxy$ partial pressure, and monitoring the change of quality attributes during the storage period. This can be as much as one year for apple and pear fruit.
+\\
+\\
+As an alternative, a mathematical model based approach could be used to optimize storage protocols. This approach relies on comprehensive mathematical models that describe the behavior of the product as a dynamical system with inputs (temperature, $\oxy$ partial pressure and $\coxy$  partial pressure) and outputs (respiration and fermentation rate, quality attributes), based on physical, chemical and biological laws. The experimental effort has, therefore, shifted from parameter estimation of black box response surface models to parameter estimation of scientifically informed differential equation models.
+\\
+\\
+This shift also requires us to modernize the experimental design methodology used in postharvest research. The description of the system with differential equations means we no longer have to independently test the fruit and vegetables at different storage conditions. This shift instead allows us to use time-varying $\oxy$ and $\coxy$ partial pressures in a single experiment. 
+\section{Goals}
+The general goal of this thesis is to develop the statistical methodology required to create dynamic inputs that lead to precise parameter estimation for non-linear differential equation models. In Chapters \ref{paper1} and \ref{paper2}, we apply this to the estimation of respiration and fermentation parameters of pear fruit. In doing so, several challenges  must be overcome:
+\begin{itemize}
+	\item \textbf{Challenge 1}. Constructing optimal experiments for non-linear dynamic systems is a circular problem, as the best experiment to learn about the model parameters depends on the specific values of those parameters. Some form of prior information about the model parameters is required to solve this issue.
+	\item \textbf{Challenge 2}. If the prior information required in \textbf{Challenge 1} were perfect, then no further experiments would be needed. Generally, however, there is substantial uncertainty concerning the prior information. Therefore, a robust experimental design is desired that performs well over a range of possible parameter values.
+	\item \textbf{Challenge 3}. Current experimental design methodology ignores process noise. Often, all errors are attributed to measurement noise. 
+	\item \textbf{Challenge 4}. Adapting the experimental design using information from measurements as they are being gathered is another way to deal with the dependence of the optimal experiment on the true parameters. Here, the challenge is to cope with the growing complexity of the optimization problem over time, particularly when also dealing with process noise.
+\end{itemize}
+\pagebreak
+
+\section{Chapter by Chapter Overview}
+\begin{itemize}
+	\item \textbf{Chapter \ref{paper1}} uses the traditional locally optimal experimental design method to optimize oxygen input profiles, which lead to a precise estimation of respiration parameters. This method deals with the dependence of these input profiles on the true respiration parameters, described in \textbf{Challenge 1}, by requiring an initial guess for these parameters. This initial guess is provided by a parameter estimate from the literature.
+	\item \textbf{Chapter \ref{paper2}} addresses \textbf{Challenge 2} by developing a robust experimental design method involving a quantification of the uncertainty about the model parameters by applying a Markov-chain Monte-Carlo technique to a prior data-set. This robust experimental design method is then used to jointly optimize both  $\oxy$ and $\coxy$ input profiles to precisely estimate both respiration and fermentation parameters of pear fruit.
+	\item \textbf{Chapter \ref{paper3}} uses the Kalman filter to deal with \textbf{Challenge 3} of experimental design under process noise. This filter is used to track an estimate of the hidden states over time. This estimate is required to calculate the likelihood of the model parameters, which in turn is required to calculate the Fisher information matrix for these more complicated dynamic systems with process noise. The state estimate is also required for \textbf{Challenge 4} concerning adaptive designs, as we need information about the true state of the system when redesigning the remainder of the experiment. The issue of growing complexity of the optimization problem over time is dealt with by using a combination of the observed and expected Fisher information matrix.
+	\item \textbf{Chapter \ref{conclusion}} contains an overarching conclusion of the work done in my thesis. This chapter also gives an overview of alternative or related experimental design strategies for dynamic systems, as well as an overview of numerical methods that might improve the speed or precision with which an optimized experiment can be constructed. I also discuss future research prospects that might grow out of the techniques described in this thesis.
+\end{itemize}

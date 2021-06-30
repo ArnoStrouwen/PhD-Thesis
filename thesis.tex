@@ -1,0 +1,118 @@
+%\documentclass[showinstructions,faculty=fbiw,department=bsy,doctoralschool=ads]{adsphd}
+\documentclass[tothejury,faculty=fbiw,department=bsy,doctoralschool=ads]{adsphd}
+
+%\documentclass[showinstructions,showlabels,coverfontpercent=100,faculty=firw,department=cws,phddegree=cws]{adsphd}
+%\documentclass[croppedpdf,showinstructions,faculty=firw,department=cws,phddegree=cws]{adsphd}
+%\documentclass[online,faculty=firw,department=cws,phddegree=cws]{adsphd}
+%\documentclass[print,bleed,cropmarks,faculty=firw,department=cws,phddegree=cws]{adsphd} % include bleed for the print service
+%\documentclass[print,faculty=firw,department=cws,phddegree=cws]{adsphd}
+%\documentclass[final,faculty=firw,department=cws,phddegree=cws]{adsphd}
+%\documentclass[showinstructions,faculty=firw,department=cws,phddegree=cws,epub]{adsphd}
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !!                                                               !!
+% !!  WARNING: do not remove the following lines between           !!
+% !!  "%%% COVER: Settings %%%" and "%%% COVER: End settings %%%"  !!
+% !!                                                               !!
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+%%% COVER: Settings %%%
+\title{Optimal Experimental Design for Dynamic Systems}
+\subtitle{Towards more efficient experimentation in post-harvest storage of fruit and vegetables}
+
+\author{Arno}{Strouwen}
+
+\supervisor{Prof.~dr.~Peter Goos}{}
+\supervisor{Prof.~dr.~ir.~Bart Nicolaï}{}
+\president{Prof.~dr.~ir.~René~De~Mot}{}
+\jurymember{Prof.~dr.~ir.~Kristel~Bernaerts}{}
+\jurymember{Prof.~dr.~ir.~Wouter~Saeys}{}
+\externaljurymember{Prof.~dr.~Julio~Banga}{Instituto de Investigacións Mariñas-\\Consejo Superior de Investigaciones Científicas}
+\externaljurymember{Dr.~ir.~Philippe~Nimmegeers}{Universiteit Antwerpen}
+
+% Your research group within the department
+% e.g. iMinds-DistriNet, Scientific Computing Group, ...
+\researchgroup{MeBioS}
+\website{} % Leave empty to hide
+\email{arno.strouwen@kuleuven.be} % Leave empty to hide
+
+\address{Kasteelpark Arenberg 30}
+% \addresscity{B-3001 Leuven} % This is the default value. Note
+                              % that 'B-3001 Heverlee' is _incorrect_!!
+                              % /[https://www.kuleuven.be/communicatie/marketing/intranet/huisstijl/taalgebruik.html]
+\date{August 2021}
+\copyyear{2021}
+%\udc{XXX.XX}            % UDC, deposit number and ISBN are no longer necessary.
+%\depot{XXXX/XXXX/XX}    % Leave out the initial D/ (it is added
+                         % automatically)
+%\isbn{XXX-XX-XXXX-XXX-X}
+
+
+% Set spine width:
+\setlength{\adsphdspinewidth}{9mm}
+
+%% Set bleeds
+%\setlength{\defaultlbleed}{7mm}
+%\setlength{\defaultrbleed}{7mm}
+
+% Set custom cover page
+% \setcustomcoverpage{mycoverpage.tex} % mycoverpage.tex is the default
+
+%%% COVER: End settings %%%
+
+% BibLaTeX
+\usepackage[utf8]{inputenc}
+%\usepackage{csquotes}
+\usepackage[
+  hyperref=auto,
+  mincrossrefs=999,
+  backend=biber,
+  style=authoryear]{biblatex}
+\addbibresource{ref/1.bib}
+\addbibresource{ref/2.bib}
+\addbibresource{ref/3.bib}
+\addbibresource{ref/conclusion.bib}
+
+% Fonts
+\usepackage{textcomp} % nice greek alphabet
+\usepackage{pifont}   % Dingbats
+\usepackage{booktabs}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MY PACKAGES
+
+\include{commands}
+
+
+\begin{document}
+\makefrontcoverXII
+\maketitle
+\frontmatter % to get \pagenumbering{roman}
+\include{chapters/preface}
+\include{chapters/Abstract}
+\include{chapters/BeknopteSamenvatting}
+\include{chapters/AbbreviationNomenclature}
+\tableofcontents
+\listoffigures
+\listoftables
+\mainmatter % to get \pagenumbering{arabic}
+\include{chapters/Introduction}
+\include{chapters/Paper1}
+\include{chapters/Paper2}
+\include{chapters/Paper3}
+\include{chapters/OverarchingConclusion}
+\include{chapters/Outlook}
+\appendix
+\include{chapters/AppendixA}
+
+\backmatter
+
+% BibLatex (comment lines above and comment out biblatex lines in preamble)
+\printbibliography
+\include{chapters/Publications}
+\makebackcoverXII
+\end{document}
+

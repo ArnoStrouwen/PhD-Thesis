@@ -1,0 +1,158 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\babel@toc {dutch}{}
+\babel@toc {english}{}
+\babel@toc {dutch}{}
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Contents}{xi}{section*.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Figures}{xv}{section*.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Tables}{xvii}{section*.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Goals}{2}{section.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Chapter by Chapter Overview}{3}{section.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Optimizing Oxygen Input Profiles for Efficient Estimation of Michaelis-Menten Respiration Models}{5}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Introduction}{6}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Methods}{8}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Dynamic Model for Respiration}{8}{subsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Optimal Experimental Design Methodology}{9}{subsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}Information Optimization}{12}{subsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Results}{14}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Proof of Concept Example}{15}{subsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Optimal design}{15}{section*.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Comparison to benchmark designs}{17}{section*.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Refining the Design Space}{20}{subsection.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Allowing more frequent input changes}{20}{section*.25}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Allowing more input levels}{21}{section*.27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Discussion}{22}{section.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Conclusion}{24}{section.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Robust Dynamic Experiments for the Precise Estimation of Respiration and Fermentation Parameters of Fruit and Vegetables}{25}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Introduction}{26}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Bayesian Optimal Experimental Design for Dynamical Systems}{28}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Dynamic Models}{29}{subsection.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Information Content of an Experiment}{29}{subsection.3.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Discretizing the Controls}{30}{subsection.3.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.4}Robustifying the Experiment}{30}{subsection.3.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.5}Numerical Details}{31}{subsection.3.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Respiration and Fermentation Model of Pear Fruit}{32}{section.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Model Description}{33}{subsection.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Prior Information}{34}{subsection.3.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.3}Markov-chain Details}{37}{subsection.3.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Results}{38}{section.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}Locally Optimal Designs for the Respiration and Fermentation Model}{38}{subsection.3.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.2}Bayesian Optimal Designs for the Respiration and Fermentation Model}{42}{subsection.3.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Discussion and Future Work}{44}{section.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.1}Alternative Information Criteria}{44}{subsection.3.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.2}State Discretization}{45}{subsection.3.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.3}Reverse Automatic Differentiation}{46}{subsection.3.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.6}Conclusion}{46}{section.3.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Adaptive and Robust Experimental Design for Linear Dynamic Models using the Kalman Filter}{47}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Introduction}{48}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Modeling the Information Content of a Dynamic Experiment}{50}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}The Model}{50}{subsection.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}Parameter Estimation}{51}{subsection.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.3}The Fisher Information Matrix}{53}{subsection.4.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}D-optimal Experimental Design}{56}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Locally Optimal Experimental Design}{56}{subsection.4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Robust Experiments}{56}{subsection.4.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}Adaptive Experiments}{57}{subsection.4.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Concept}{57}{section*.42}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Computational Challenges}{57}{section*.43}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Computational Shortcut}{58}{section*.44}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Final Algorithm}{60}{section*.45}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Numerical details}{61}{section.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Case Studies}{62}{section.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5.1}Mass-Spring-Damper System}{62}{subsection.4.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Problem description}{62}{section*.46}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Optimal Versus Random Design}{63}{section*.48}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Added Value of the Robustness and Adaptivity}{66}{section*.52}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.6}Two Compartment System}{69}{section.4.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.7}Discussion and Conclusion}{70}{section.4.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Conclusion and Outlook}{72}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Overarching Conclusion}{72}{section.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Outlook}{74}{section.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.1}Model Selection}{74}{subsection.5.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Model Discrimination}{74}{section*.55}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Missing Model Components}{75}{section*.56}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.2}Process Noise}{75}{subsection.5.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.3}Kullback-Leibler Divergence}{76}{subsection.5.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.4}Koopman Expectation}{76}{subsection.5.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.5}Fully Risk Averse Experimental Design}{76}{subsection.5.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.6}Goal Driven Experimental Design}{77}{subsection.5.2.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Markov chain details}{79}{appendix.A}%

@@ -1,0 +1,28 @@
+
+\begin{tikzpicture}
+\tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
+\tikzstyle{damper}=[thick,decoration={markings,  
+	mark connection node=dmp,
+	mark=at position 0.5 with 
+	{
+		\node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum width=15pt,minimum height=3pt,draw=none] {};
+		\draw [thick] ($(dmp.north east)+(2pt,0)$) -- (dmp.south east) -- (dmp.south west) -- ($(dmp.north west)+(2pt,0)$);
+		\draw [thick] ($(dmp.north)+(0,-5pt)$) -- ($(dmp.north)+(0,5pt)$);
+	}
+}, decorate]
+\tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.75cm,minimum height=0.3cm,inner sep=0pt,outer sep=0pt]
+
+\node [style={draw,outer sep=0pt,thick}] (M) [minimum width=1cm, minimum height=2.5cm] {$M$};
+
+\draw [thick] (M.south west) ++ (0.2cm,-0.125cm) circle (0.125cm)  (M.south east) ++ (-0.2cm,-0.125cm) circle (0.125cm);
+
+\node (wall) [ground, rotate=-90, minimum width=3cm,yshift=-3cm] {};
+\node (y) at (M.south) [yshift = -0.25cm] {$y$};
+
+\draw [spring] (wall.170) -- node [above] {$K$} ($(M.north west)!(wall.170)!(M.south west)$);
+\draw [damper] (wall.10) -- node [above=0.25cm] {$C$} ($(M.north west)!(wall.10)!(M.south west)$);
+\draw [-latex,ultra thick] (wall.0) -- (y);
+
+\node (F) at (M.east)[xshift = 2cm] {$F$};
+\draw [-latex,ultra thick] (M.east) -- (F.west);
+\end{tikzpicture} 
