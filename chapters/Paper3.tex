@@ -1,13 +1,16 @@
 \chapter{Adaptive and Robust Experimental Design for Linear Dynamic Models using the Kalman Filter}
 \label{paper3}
 This chapter has been written by Arno Strouwen with feedback from Professors Goos and Nicolaï.
+\\
+\\
+{\color{red}Source code available upon request.}
 \section*{Abstract}
-Current experimental design techniques for dynamic systems often only incorporate measurement noise, but often dynamic systems also involve process noise. To construct experimental designs we need to quantify their information content. The Fisher information matrix is a popular tool to do so. Calculating the Fisher information matrix for linear dynamic systems with both process and measurement noise involves estimating the uncertain dynamic states using a Kalman filter. The Fisher information matrix, however, depends on the true but unknown model parameters. In this paper we combine two methods to solve this issue and develop a robust experimental design methodology. First, Bayesian experimental design averages the Fisher information matrix over a prior distribution of possible model parameter values. Second, adaptive experimental design allows for this information to be updated as measurements are being gathered. This updated information is then used to adapt the remainder of the design.
+Current experimental design techniques for dynamic systems often only incorporate measurement noise, {\color{red}while} dynamic systems also involve process noise. To construct experimental designs we need to quantify their information content. The Fisher information matrix is a popular tool to do so. Calculating the Fisher information matrix for linear dynamic systems with both process and measurement noise involves estimating the uncertain dynamic states using a Kalman filter. The Fisher information matrix, however, depends on the true but unknown model parameters. In this paper we combine two methods to solve this issue and develop a robust experimental design methodology. First, Bayesian experimental design averages the Fisher information matrix over a prior distribution of possible model parameter values. Second, adaptive experimental design allows for this information to be updated as measurements are being gathered. This updated information is then used to adapt the remainder of the design.
 \section{Introduction}
 Control, optimization and analysis of dynamic systems are increasingly being performed using parametric models \parencite{findeisen}. High-quality data are needed to precisely identify these models. Optimal input design for dynamic systems deals with the cost-effective collection of these data \parencite{goodwin}.
 \\
 \\
-Most experimental design literature for precisely estimating model parameters of dynamic systems focuses on models with only measurement noise \parencite{franceschini}, or on models with only process noise, when dealing with autoregressive models for time-series modeling \parencite{hjalmarsson}. The two previous chapters also only took into account measurement noise. Relatively little literature exists about designing informative experiments when both measurement and process noise are present. The main challenge that than arises is that estimating the unknown model parameters also requires the hidden dynamic states to be estimated.
+{\color{red}Most experimental design literature for precisely estimating model parameters of dynamic systems focuses on models with only measurement noise \parencite{franceschini}, or on models with only process noise, when dealing with autoregressive models for time-series modeling \parencite{hjalmarsson,pintelon}. The two previous chapters also only took into account measurement noise. Relatively little literature exists about designing informative experiments when both measurement and process noise are present. One approach that does combine process and measurement noise for experimental design is that of \textcite{telen2}. These authors use a heuristic extension of the Fisher information matrix used by \textcite{franceschini} to deal with process noise. Our approach differs as we use the formal definition of the Fisher information matrix, based on the variance of the score, which is the gradient of the log-likelihood function. The main challenge that arises in this approach is that estimating the unknown model parameters also requires the hidden dynamic states to be estimated.}
 \\
 \\
 Estimating such hidden states for continuous-time non-linear stochastic differential equations generally has no analytical solution \parencite{solin}. In this chapter, we focus on linear discrete-time dynamic systems with both measurement and process noise. For these models analytical results exist. Particularly, the Kalman filter is used to estimate the dynamic state. The Kalman filter has hardly been used in the context of optimal experiments. \textcite{titterington} uses the steady state Kalman filter to construct continuous optimal designs, which are asymptotically optimal when a large amount of data is gathered. This is in contrast to exact designs, which are optimized for a finite number of measurements, and which we use in this chapter. Because of our focus on a finite number of measurements, our chapter also does not rely on the steady state prediction error covariance. \textcite{stojanovic} use a robust Kalman filter to generate optimal inputs for autoregressive models with non-Gaussian noise. Instead of autoregressive models, we work with linear state space models, where the matrices describing such a state space model may depend on model parameters that must be estimated as precisely as possible.
@@ -37,7 +40,7 @@ Our goal is to find dynamic inputs $\bm  u_{1:T}$ which lead to a precise estima
 In these equations, $\bm  y_k$ represents the measured outputs at time-step $k$. We assume that the experiment ends after $T$ time-steps, and thus $k$ can range from $1$ to $T$. The measured output is dependent on the dynamic states $\bm  x_k$ through the output matrix $H(\bm \theta)$. These states completely determine the stochastic evolution of the system over time. The transition of the states from one time-step to the next is impacted by the state matrix $F(\bm \theta)$, as well as the inputs at that time-step, $\bm  u_k$, through the input matrix $B(\bm \theta)$. All three of these matrices $F(\bm \theta)$, $B(\bm \theta)$ and $H(\bm \theta)$  can depend on the model parameters $\bm \theta$.
 \\
 \\
-Noise is present in both the measurements and the state transitions. We make the following assumptions about the measurement noise $\bm v_k$ and the process noise $\bm w_k$ at time-step $k$:
+Noise is present in both the measurements and the state transitions. We make the following assumptions about the measurement noise $\bm v_k$ and the {\color{red}uncontrollable and unobserved} process noise $\bm w_k$ at time-step $k$:
 \begin{equation}
 \begin{aligned}
 & \bm w_k \sim \mathcal{N}(\bm 0,Q(\bm \theta)),\\
@@ -72,7 +75,7 @@ p(\bm y_k|\bm \theta, \bm u_{1:k},\bm y_{1:k-1})
 = \int p(\bm y_k|\bm x_k, \bm \theta)p(\bm x_k|\bm \theta, \bm u_{1:k},\bm y_{1:k-1})\dd \bm x_k.
 \label{likelihood factor}
 \end{equation}
-In this equation, the first factor of the integrand $p(\bm y_k|\bm x_k, \bm \theta)$ corresponds to $\mathcal{N}(\bm H(\bm \theta)\bm x_k,R(\bm \theta))$, while the second factor, $p(\bm x_k|\bm \theta, \bm u_{1:k},\bm y_{1:k-)})$, called the state predictive distribution, can be calculated as
+In this equation, the first factor of the integrand $p(\bm y_k|\bm x_k, \bm \theta)$ corresponds to $\mathcal{N}(\bm H(\bm \theta)\bm x_k,R(\bm \theta))$, while the second factor, $p(\bm x_k|\bm \theta, \bm u_{1:k},\bm y_{1:k-1})$, called the state predictive distribution, can be calculated as
 \begin{equation}
 p(\bm x_k|\bm \theta, \bm u_{1:k},\bm y_{1:k-1}) = \int p(\bm x_k|\bm x_{k-1}, \bm \theta, \bm u_k)
 p(\bm x_{k-1}|\bm \theta, \bm u_{1:k-1},\bm y_{1:k-1})\dd \bm x_{k-1}.
@@ -130,6 +133,7 @@ L_k(\bm \theta, \bm u_{1:k}, \bm y_{1:k}) = L_{k-1}(\bm \theta, \bm u_{1:k-1}, \
 \end{equation}
 where $S_k$ and $\bm v_k$ come from the Kalman filter recursion. The likelihood at a certain model parameter value $\bm \theta$ can thus be updated at every time-step by running a Kalman filter, with that particular value of $\bm \theta$.
 \subsection{The Fisher Information Matrix}
+\label{secFIM3}
 One common approach to quantify the quality of the inputs $\bm u_{1:T}$ for precisely estimating the static parameters $\bm \theta$ is the expected Fisher information matrix (FIM):
 \begin{equation}
 \begin{aligned}
@@ -146,7 +150,7 @@ In this equation, $\bm y_{1:T}|\bm \theta, \bm u_{1:T}$ denotes the joint distri
 We can also explain the expected FIM in the following way: we want to chose inputs $\bm u_{1:T}$ such that the true parameter $\bm \theta$ will fit the obtained data well, while other parameters should fit poorly. This is equivalent to saying that we want the log-likelihood function $\log p(\bm y_{1:T}|\bm \theta, \bm u_{1:T})$ to exhibit a sharp peak around the true model parameter value $\bm \theta$. When the Hessian matrix in the FIM, has large negative eigenvalues, the peak is sharp. Of course, when planning the experiment we do not know the outcomes $\bm y_{1:T}$ of the experiment yet. Therefore, the expectation should be taken with regard to all possible outcomes. So, it requires solving a high-dimensional integral.  
 \\
 \\
-Calculating the expected FIM for arbitrary non-linear models is often intractable, because generally no analytical results are available for the high-dimensional integral that is involved in this calculation. However, our model in Equation (\ref{system}) only contains linear transformations, and multivariate normal distributions remain normal under such transformations. As a result, the measurements $\bm y_{1:T}|\bm \theta, \bm u_{1:T}$ also follow a multivariate normal distribution. More specifically, the expected value and covariance of the measurements can be calculated by using following recursion relations, as adapted from \textcite{cavanaugh} to allow for models with control inputs $\bm u_{1:T}$:
+Calculating the expected FIM for arbitrary non-linear models is often intractable, because generally no analytical results are available for the high-dimensional integral that is involved in this calculation. {\color{red}These integrals are then often numerically approximated using Monte Carlo methods \parencite{ryan}.} However, our model in Equation (\ref{system}) only contains linear transformations, and multivariate normal distributions remain normal under such transformations. As a result, the measurements $\bm y_{1:T}|\bm \theta, \bm u_{1:T}$ also follow a multivariate normal distribution. More specifically, the expected value and covariance of the measurements can be calculated by using following recursion relations, as adapted from \textcite{cavanaugh} to allow for models with control inputs $\bm u_{1:T}$:
 \begin{equation}
 \begin{aligned}
 E(\bm y_r |\bm \theta, \bm u_{1:T})
@@ -201,7 +205,7 @@ One of the main difficulties in experimental design is the dependence of the exp
 \end{equation}
 This method is called locally optimal design as the design only performs well if this single initial guess for the model parameters is close to the true value. In Equation (\ref{local optimality}), $\bm u_\text{min}$ and $\bm u_\text{max}$ are the minimal and maximal allowed control values, respectively.
 \subsection{Robust Experiments}
-To make the design more robust, so that it provides much information if the initial guess is not very close to the true value of the model parameters, we can replace the single initial guess $\bm \theta^*$ with a prior probability distribution $p(\bm \theta)$, which represents our belief in possible values of $\bm \theta$ before the experiment has started. We want the experiment to perform well over the parameter values in the domain of $p(\bm \theta)$, where the most likely parameter values have the largest weight. Averaging the determinant of the expected FIM over this prior distribution and then optimizing this average achieves this:
+To make the design more robust, so that it provides much information if the initial guess is not very close to the true value of the model parameters, we can replace the single initial guess $\bm \theta^*$ with a prior probability distribution $p(\bm \theta)$, which represents our {\color{red}knowledge of} possible values of $\bm \theta$ before the experiment has started. We want the experiment to perform well over the parameter values in the domain of $p(\bm \theta)$, where the most likely parameter values have the largest weight. Averaging the determinant of the expected FIM over this prior distribution and then optimizing this average achieves this:
 \begin{equation}
 \begin{aligned}
 \argmax_{\bm u_\text{min} \leq \bm u_{1:T} \leq \bm u_\text{max}} \int \left | \mathcal{I}(\bm \theta,\bm u_{1:T}) \right | p(\bm \theta) \dd \bm \theta
@@ -211,7 +215,11 @@ To make the design more robust, so that it provides much information if the init
 \label{bayesian optimality}
 \end{aligned}
 \end{equation}
-So, the expectation is approximated by Monte Carlo integration with $N$ draws from the prior distribution $p(\bm \theta)$, each draw having the same weight, $\frac{1}{N}$. Due to the use of a prior distribution, this technique is also called pseudo-Bayesian optimal design \parencite{chaloner}. We want to stress that the optimality criterion is only pseudo-Bayesian, and not fully Bayesian. This is because, while the prior information is used to construct the inputs, it is not directly used to influence the estimation of the parameters. Only the information coming from the measurements acquired from the experiment is incorporated in the information criterion.
+So, the expectation is approximated by Monte Carlo integration with $N$ draws from the prior distribution $p(\bm \theta)$, each draw having the same weight, $\frac{1}{N}$.
+{\color{red}Besides Monte Carlo integration, other methods to numerically calculate this robust D-criterion exist, such as the sigma-point based method of \textcite{telen}. However, these methods complicate the updating of the weights for adaptive experimental design in the following section, and might not be compatible with the jittering described in the discussion section.}
+\\
+\\
+Due to the use of a prior distribution, this technique is also called pseudo-Bayesian optimal design \parencite{chaloner}. We want to stress that the optimality criterion is only pseudo-Bayesian, and not fully Bayesian. This is because, while the prior information is used to construct the inputs, it is not directly used to influence the estimation of the parameters. Only the information coming from the measurements acquired from the experiment is incorporated in the information criterion.
 \subsection{Adaptive Experiments}
 \subsubsection{Concept}
 In the local optimal design criterion in Equation (\ref{local optimality}) and the pseudo-Bayesian optimal design criterion in Equation (\ref{bayesian optimality}), prior information was only incorporated at the start of the experiment. But as soon as the experiment has started, knowledge is accumulating. That additional information can be exploited to optimize the remainder of the experiment. To formalize this, we now assume that we have already performed an experiment with inputs $\bm u_{1:k}$ and measured outputs  $\bm y_{1:k}$. These measurements are used to form an updated prior distribution after $k$ measurements, $p(\bm \theta | \bm u_{1:k}, \bm y_{1:k})$, which represents our belief in the possible values of the model parameters $\bm \theta$ given the additional information the first $k$ measurements contain. We use this updated prior to optimize the remaining inputs $\bm u_{k+1:T}$ of the experiment:
@@ -238,19 +246,19 @@ The observed FIM has been argued to be a superior tool to quantify the variance 
 \end{equation}
 To calculate the expected FIM $\mathcal{I}(\bm \theta,\bm u_{k+1:k+e})$ only an expectation over $\bm y_{k+1:k+e}$ is needed. So,
 \begin{equation}
-\label{expectedFIMk}
-\begin{aligned}
-&\mathcal{I}(\bm \theta,\bm u_{k+1:k+e})[i,j]= \\
-&\frac{\partial \bm E (\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k}, \bm u_{1:k+e})'}{\partial \bm \theta[i]}
-\Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})^{-1}\frac{\partial \bm E (\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})}{\partial \bm \theta[j]} \\ & \qquad \qquad + \\
-&\qquad\frac{1}{2}
-\text{tr} \left (
-\Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})^{-1}
-\frac{\partial \Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})}{\partial \bm \theta[i]} \right.\\
-&\qquad \left. \qquad\Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})^{-1} 
-\frac{\partial \Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})}{\partial \bm \theta[j]}
-\right ).
-\end{aligned}
+	\label{expectedFIMk}
+	\begin{aligned}
+		&\mathcal{I}(\bm \theta,\bm u_{k+1:k+e})[i,j]= \\
+		&\frac{\partial \bm E (\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k}, \bm u_{1:k+e})'}{\partial \bm \theta[i]}
+		\Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})^{-1}\frac{\partial \bm E (\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})}{\partial \bm \theta[j]} \\ & \qquad \qquad + \\
+		&\qquad\frac{1}{2}
+		\text{tr} \left (
+		\Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})^{-1}
+		\frac{\partial \Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})}{\partial \bm \theta[i]} \right.\\
+		&\qquad \left. \qquad\Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})^{-1} 
+		\frac{\partial \Covar(\bm y_{k+1:k+e}| \bm \theta, \bm y_{1:k},\bm u_{1:k+e})}{\partial \bm \theta[j]}
+		\right ).
+	\end{aligned}
 \end{equation}
 The recursion formulas in Equation (\ref{recursion0}) must thus also be changed to not recurse all the way back to time point $0$. The recursion instead should end at time $k$, with the state mean $\bm m_k$ and covariance estimate $P_k$ coming from the Kalman filter in Equation (\ref{Kalman}):
 \begin{equation}
@@ -279,7 +287,7 @@ The recursion formulas in Equation (\ref{recursion0}) must thus also be changed 
 \end{aligned}
 \label{recursioni}
 \end{equation}
-The integral in Equation (\ref{adaptive bayesian optimality}) can again be approximated by Monte-Carlo integration:
+The integral in Equation (\ref{adaptive bayesian optimality}) can again be approximated by Monte Carlo integration:
 \begin{equation}
 \argmax_{\bm u_\text{min} \leq \bm u_{k+1:k+e} \leq \bm u_\text{max}}
 \sum_{i=1}^N
@@ -350,7 +358,7 @@ Sequential quadratic programming, as implemented in NLopt \parencite{johnson}, i
 \section{Case Studies}
 \subsection{Mass-Spring-Damper System}
 \subsubsection{Problem description}
-In the first case study, we consider experimental design for the mass-spring-damper system depicted in Figure \ref{fig:msd}. The discretized linear dynamics of this system are:
+In the first case study, we consider experimental design for the mass-spring-damper system depicted in Figure \ref{fig:msd}. {\color{red}Mass-spring-damper systems are commonly used in bio-mechanics \parencite{pieczywek}.} The discretized linear dynamics of this system are:
 \begin{equation}
 \begin{aligned}
 &\bm x_k = \begin{bmatrix}
@@ -418,7 +426,7 @@ The above discussion already shows the value of experimental design methodology 
 In Figure \ref{figEnsembleRedHor}, the control horizon length, $e$, is reduced from $3$ to $1$. This causes this experiment to perform almost as bad as the random experiment. Increasing the control horizon length to $6$, however, does not greatly increase the performance of the experiment, as shown in Figure \ref{figEnsembleIncrHor}. Increasing the control horizon thus has diminishing marginal returns, which is good to know since a short horizon keeps the size of the matrices involved in the calculation of expected FIM in Equation (\ref{expectedFIMk}) manageable. The lack of additional information when increasing the control horizon is probably due to the increased variance of the predictions further into the future. 
 \\
 \\
-The effect of the number of parameters drawn from the prior distribution, $N$, is shown in Figures \ref{figEnsembleRedRob} and \ref{figEnsembleIncrRob}. For the non-robust experiment, the mean of the prior distribution of the model parameters was used in the calculation of the Fisher information matrices in Equations (\ref{expectedFIMk}) and (\ref{observedFIM}), instead of a single random value from this distribution. The effect of reducing robustness is much less pronounced than the effect of reducing the control horizon. Only the convergence of the estimate of the damper constant is slower. Increasing the number of draws from the prior distribution from $100$ to $500$ also seems to have little added value past a certain point. This is because the Monte-Carlo integration involved in Bayesian optimal design is already adequate.
+The effect of the number of parameters drawn from the prior distribution, $N$, is shown in Figures \ref{figEnsembleRedRob} and \ref{figEnsembleIncrRob}. For the non-robust experiment, the mean of the prior distribution of the model parameters was used in the calculation of the Fisher information matrices in Equations (\ref{expectedFIMk}) and (\ref{observedFIM}), instead of a single random value from this distribution. The effect of reducing robustness is much less pronounced than the effect of reducing the control horizon. Only the convergence of the estimate of the damper constant is slower. Increasing the number of draws from the prior distribution from $100$ to $500$ also seems to have little added value past a certain point. This is because the Monte Carlo integration involved in Bayesian optimal design is already adequate.
 \\
 \\
 We also compare our adaptive experimental design technique to the non-adaptive strategy from Equation (\ref{bayesian optimality}), in Figure \ref{figEnsembleNonAdp}. In the beginning of the experiment, the non-adaptive experiment performs equally well as our adaptive strategy. However, later on in the experiment, between time-steps $50$ and $75$, the estimation of the damper constant is clearly performing worse than the adaptive experiment. An additional shortcoming of the non-adaptive design is the large computational time required to generate this design. This is because the non-adaptive experiment requires predicting $100$ steps into the future. The optimization of this design was much slower than the adaptive designs with a short control window, due to the presence of large matrices in the expected FIM in Equation (\ref{expectedFIMk}).
@@ -474,7 +482,7 @@ Finally, the effect of a larger number of time-steps is shown in Figure \ref{fig
 	\label{fig:analysis}
 \end{figure}
 \section{Two Compartment System}
-In the second case study, we consider experimental design for a two compartment system. Compartment systems are common in postharvest modeling \parencite{lechaudel,yoneyama}. The discretized linear dynamics of this system are:
+In the second case study, we consider experimental design for a two compartment system. Compartment systems are common in postharvest modeling \parencite{lechaudel,yoneyama}, {\color{red}and pharmacokinetics \parencite{fedorov}}. The discretized linear dynamics of this system are:
 \begin{equation}
 \begin{aligned}
 \bm x_k &= \begin{bmatrix}
@@ -489,7 +497,7 @@ y_k &= \begin{bmatrix} \Delta tK_{1,0} & 0 \end{bmatrix} \bm x + v_k, \\
 v_k &\sim \mathcal{N}(0,0.0001).
 \end{aligned}
 \end{equation}
-In these equations, $K_{1,2}$, $K_{2,1}$ and $K_{1,0}$ are the unknown model parameters that determine the flows between the two compartments and the flow from the first compartment to the environment. Their true values are assumed to all equal $0.2$. The prior distributions we use for them are independent normal distributions centered around $0.22$, with variances assumed equal to $0.0016$. The time between measurements, $\Delta t$, is assumed equal to $0.1$. The outflow of the first compartment to the environment is the measured output, with measurement noise on top of it. The initial distributions for the two compartments are assumed to be independent normal distributions with means equal to $10$ and $1$, and variances equal to $0.01$ and $0.00001$, respectively. The controllable input at time-step k, $u_k$, is a flow towards the first compartment. This input is constrained between $0$ and $10$. But there is also an unknown stochastic input to the first compartment, represented by a Wiener process with spectral density $q$ equal to $0.001$.
+In these equations, $K_{1,2}$, $K_{2,1}$ and $K_{1,0}$ are the unknown model parameters that determine the flows between the two compartments and the flow from the first compartment to the environment. Their true values are assumed to all equal $0.2$. The prior distributions we use for them are independent normal distributions centered around $0.22$, with variances assumed equal to $0.0016$. The time between measurements, $\Delta t$, is assumed equal to $0.1$. The outflow of the first compartment to the environment is the measured output, with measurement noise on top of it. The initial distributions for the two compartments are assumed to be independent normal distributions with means equal to $10$ and $1$, and variances equal to $0.01$ and $0.00001$, respectively. The controllable input at time-step k, $u_k$, is a flow towards the first compartment. This input is constrained between $0$ and $10$. {\color{red}There is also an unknown stochastic input $\bm w_k$ to the first compartment, represented by a discretization of Brownian motion with spectral density $q$ equal to $0.001$. Brownian motion is a continuous time stochastic process whose increments are independent, stationary and normally distributed. The variance of the increments is determined by the spectral density.}
 \\
 \\
 This example shows the added value of working with arbitrarily parametrized state space models, instead of linear autoregressive models. Some parameters, such as $K_{1,0}$, occur multiple times in the system dynamics. This is contrary to autoregressive models, where the output is assumed to be a linear combination of previous measurements and inputs, and each parameter of this linear combination is allowed to vary freely in the parameter estimation.
